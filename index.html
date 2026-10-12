@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🎬%3C/text%3E%3C/svg%3E">
+<title>CinéMRK – Films & Séries</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#07070c;--card:#14141d;--tx:#f4f4f8;--mu:#a0a3b8;--ac:#ff2e4d;--ac2:#ff9d2e;--gl:#ffffff14}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f1f1f6;--card:#fff;--tx:#14151a;--mu:#5f6376;--gl:#00000012}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--tx);font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--bg);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 40% at 10% 0%,#ff2e4d33,transparent),radial-gradient(50% 40% at 100% 20%,#6a3dff33,transparent),radial-gradient(50% 40% at 50% 100%,#ff9d2e22,transparent)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:12px 16px;border-bottom:1px solid var(--gl)}
+h1{margin:0 0 10px;font:400 32px "Bebas Neue",Impact,sans-serif;letter-spacing:3px}
+h1 b{background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:400}
+input,select{width:100%;padding:12px 16px;border-radius:30px;border:1px solid var(--gl);background:var(--card);color:var(--tx);font:16px Inter,sans-serif;outline:0}
+input:focus{border-color:var(--ac);box-shadow:0 0 0 3px #ff2e4d33}
+.row{display:flex;gap:8px;margin-top:8px}
+.tabs,.chips{display:flex;gap:6px;overflow-x:auto;margin-top:8px;scrollbar-width:none}
+.tabs button,.chips button{border:1px solid var(--gl);border-radius:20px;padding:8px 16px;background:var(--card);color:var(--tx);font:600 13px Inter,sans-serif;cursor:pointer;white-space:nowrap;transition:.2s}
+.tabs button.on,.chips button.on{background:linear-gradient(90deg,var(--ac),var(--ac2));border-color:transparent;color:#fff;box-shadow:0 4px 18px #ff2e4d66}
+.hero{margin:16px;border-radius:24px;min-height:300px;position:relative;overflow:hidden;display:flex;align-items:flex-end;box-shadow:0 20px 60px #0008;transition:background .6s}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000c,transparent 60%)}
+.hc{position:relative;z-index:1;padding:22px;max-width:640px;color:#fff;animation:up .7s}
+.tag{font-size:11px;letter-spacing:2px;font-weight:800;background:#ffffff26;padding:5px 12px;border-radius:20px;backdrop-filter:blur(6px)}
+.hero h2{font:400 clamp(40px,9vw,76px)/.95 "Bebas Neue",Impact,sans-serif;margin:12px 0 8px;letter-spacing:2px}
+.hero p{margin:0 0 14px;opacity:.9}
+.cta{border:0;border-radius:30px;padding:11px 22px;font:700 14px Inter,sans-serif;cursor:pointer;background:#fff;color:#111;margin:0 8px 8px 0;transition:.2s}
+.cta.g{background:#ffffff2b;color:#fff;backdrop-filter:blur(8px)}.cta:hover{transform:scale(1.05)}
+main{padding:0 16px 30px;max-width:1300px;margin:auto}
+#count{color:var(--mu);font-size:13px;margin:6px 0 14px;letter-spacing:1px;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--w,145px),1fr));gap:16px}
+.card{--c:hsl(var(--h),70%,50%);background:var(--card);border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--gl);transition:.3s;animation:up .5s both;animation-delay:calc(var(--i)*25ms);cursor:pointer}
+.card:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 18px 40px color-mix(in srgb,var(--c) 55%,transparent);z-index:2}
+.poster{aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;color:#fff;font:400 24px/1 "Bebas Neue",Impact,sans-serif;letter-spacing:1px;position:relative;overflow:hidden;text-shadow:0 2px 8px #000a}
+.poster:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,#ffffff0a 0 2px,transparent 2px 10px),linear-gradient(0deg,#000b,transparent 55%)}
+.poster i{position:absolute;top:-6px;right:6px;font:400 110px "Bebas Neue",Impact,sans-serif;opacity:.22;font-style:normal}
+.poster span,.poster small{position:relative}.poster small{font:600 12px Inter,sans-serif;opacity:.85;margin-top:5px;letter-spacing:1px}
+.meta{padding:10px 12px;font-size:12px;color:var(--mu);display:flex;justify-content:space-between;font-weight:600}
+.meta em{color:#ffc83d;font-style:normal}
+.fav{position:absolute;top:8px;right:8px;border:0;background:#0009;color:#fff;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer;backdrop-filter:blur(6px);transition:.2s;z-index:1}
+.fav:hover{transform:scale(1.2)}.fav.on{color:#ff4d6d;background:#fff}
+.badge{position:absolute;top:8px;left:8px;background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:8px;letter-spacing:.5px;z-index:1}
+#more{display:block;margin:28px auto 0;padding:14px 36px;border:0;border-radius:30px;background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff;font:700 15px Inter,sans-serif;cursor:pointer;box-shadow:0 8px 30px #ff2e4d66}
+.m{position:fixed;inset:0;z-index:20;background:#000b;backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:16px;animation:up .3s}
+.m[hidden]{display:none}
+.mb{width:min(480px,100%);border-radius:24px;padding:28px 24px;color:#fff;position:relative;box-shadow:0 30px 80px #000}
+.mb h3{font:400 52px/.95 "Bebas Neue",Impact,sans-serif;margin:14px 0 10px;letter-spacing:2px}
+.mb p{margin:0 0 18px;opacity:.9;line-height:1.6}
+.x{position:absolute;top:14px;right:14px;border:0;background:#fff3;color:#fff;border-radius:50%;width:34px;height:34px;cursor:pointer}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.top h1{margin:0}
+.ic{border:1px solid var(--gl);background:var(--card);color:var(--tx);border-radius:50%;width:42px;height:42px;font-size:18px;cursor:pointer;transition:.3s}.ic:hover{transform:rotate(60deg)}
+.row select{flex:1}
+:root[data-theme="light"]{--bg:#f1f1f6;--card:#fff;--tx:#14151a;--mu:#5f6376;--gl:#00000012}
+.noanim *{animation:none!important;transition:none!important}
+.seen .badge:after{content:" ✓"}.seen .poster{filter:saturate(.45)}
+.st b{font-size:28px;cursor:pointer;opacity:.35;margin-right:4px}.st b.on{opacity:1;color:#ffc83d}
+.sim{margin-top:12px;font-size:13px}.sim u{cursor:pointer;margin:6px 8px 0 0;display:inline-block;background:#fff2;padding:5px 12px;border-radius:14px;text-decoration:none}
+.sb{width:min(460px,100%);max-height:88vh;overflow:auto;background:var(--card);color:var(--tx);border-radius:24px;padding:24px;border:1px solid var(--gl)}
+.sb h3{margin:0 0 14px;font:400 34px "Bebas Neue",Impact,sans-serif;letter-spacing:2px}
+.sr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--gl);font-size:14px}
+.sr select{width:auto;padding:8px 14px}.sr input[type=range]{width:50%;padding:0;border:0;background:none;accent-color:var(--ac)}
+.sw{width:28px;height:28px;border-radius:50%;border:2px solid transparent;margin-left:6px;cursor:pointer}.sw.on{border-color:var(--tx)}
+.sb .cta{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff;margin-top:10px}.sb .cta.g{background:var(--gl);color:var(--tx)}
+.sb textarea{width:100%;height:70px;margin-top:12px;border-radius:14px;border:1px solid var(--gl);background:var(--bg);color:var(--tx);padding:10px;font:12px monospace}
+.sn{margin:14px 0 0;color:var(--mu);font-weight:600}
+.poster.img i,.poster.img span,.poster.img small{display:none}.poster.img:before{background:linear-gradient(0deg,#0006,transparent 40%)}
+.cr{margin:18px 0 0;text-align:center;font-size:12px;letter-spacing:2px;color:var(--mu);text-transform:uppercase}.cr b{color:var(--ac)}
+</style></head><body>
+<header>
+<div class="top"><h1>CINÉ<b>MRK</b></h1><button class="ic" id="gear" title="Paramètres">⚙️</button></div>
+<input id="q" type="search" placeholder="Rechercher un film ou une série…">
+<div class="tabs" id="tabs"></div>
+<div class="chips" id="chips"></div>
+<div class="row"><select id="sort"><option value="n">Trier : Note</option><option value="y">Trier : Plus récents</option><option value="a">Trier : A → Z</option><option value="p">Trier : Ma note</option></select><select id="dec"><option value="0">Toutes époques</option><option value="2020">Années 2020</option><option value="2010">Années 2010</option><option value="2000">Années 2000</option><option value="1990">Années 90</option><option value="1900">Avant 1990</option></select></div>
+</header>
+<section class="hero" id="hero"></section>
+<main><div id="count"></div><div class="grid" id="g"></div><button id="more">Voir plus</button>
+<p class="cr" style="margin:34px 0 0;line-height:1.8">Ce produit utilise l'API TMDB mais n'est ni approuvé ni certifié par TMDB.<br>CinéMRK — créé par <b>MOUHAMED RASSOUL KANE</b></p></main>
+<div class="m" id="m" hidden></div><div class="m" id="st" hidden></div>
+<script>
+// ▼▼ COLLE ICI TA CLÉ API TMDB (gratuite : themoviedb.org/settings/api) ▼▼
+const TMDB_KEY="";
+const G=["Action","Drame","Comédie","Science-fiction","Thriller","Animation","Romance","Horreur","Fantastique","Policier"];
+const F=`Inception|2010|3|8.8;Interstellar|2014|3|8.7;The Dark Knight|2008|0|9.0;Pulp Fiction|1994|9|8.9;Forrest Gump|1994|1|8.8;Le Parrain|1972|9|9.2;Fight Club|1999|1|8.8;Matrix|1999|3|8.7;Gladiator|2000|0|8.5;Titanic|1997|6|7.9;Avatar|2009|3|7.9;Parasite|2019|4|8.5;Joker|2019|1|8.4;Le Seigneur des Anneaux|2001|8|8.9;Star Wars|1977|3|8.6;Jurassic Park|1993|3|8.2;Retour vers le futur|1985|3|8.5;Les Évadés|1994|1|9.3;Le Roi Lion|1994|5|8.5;Toy Story|1995|5|8.3;Shrek|2001|5|7.9;Le Voyage de Chihiro|2001|5|8.6;Ratatouille|2007|5|8.1;Vice-Versa|2015|5|8.1;Coco|2017|5|8.4;Les Intouchables|2011|2|8.5;Amélie Poulain|2001|6|8.3;Le Dîner de cons|1998|2|7.7;Taxi|1998|0|6.8;La Haine|1995|1|8.1;Les Visiteurs|1993|2|7.0;Bienvenue chez les Ch'tis|2008|2|7.2;OSS 117|2006|2|7.0;Léon|1994|9|8.5;Le Silence des agneaux|1991|4|8.6;Se7en|1995|4|8.6;Shutter Island|2010|4|8.2;Prisoners|2013|4|8.1;Gone Girl|2014|4|8.1;Usual Suspects|1995|9|8.5;Heat|1995|9|8.3;Scarface|1983|9|8.3;Les Affranchis|1990|9|8.7;Mad Max: Fury Road|2015|0|8.1;John Wick|2014|0|7.4;Die Hard|1988|0|8.2;Terminator 2|1991|3|8.6;Alien|1979|3|8.5;Blade Runner 2049|2017|3|8.0;Dune|2021|3|8.0;Gravity|2013|3|7.7;Seul sur Mars|2015|3|8.0;Le Cinquième Élément|1997|3|7.6;Iron Man|2008|0|7.9;Avengers: Endgame|2019|0|8.4;Spider-Man: No Way Home|2021|0|8.2;Black Panther|2018|0|7.3;Guardians of the Galaxy|2014|0|8.0;Harry Potter à l'école des sorciers|2001|8|7.6;Le Labyrinthe de Pan|2006|8|8.2;La Forme de l'eau|2017|8|7.3;Pirates des Caraïbes|2003|8|8.1;Get Out|2017|7|7.7;Hérédité|2018|7|7.3;Shining|1980|7|8.4;Ça|2017|7|7.3;Conjuring|2013|7|7.5;Psychose|1960|7|8.5;Les Dents de la mer|1975|7|8.1;La La Land|2016|6|8.0;Le Journal de Bridget Jones|2001|6|6.7;Pretty Woman|1990|6|7.1;Notting Hill|1999|6|7.2;Le Grand Bleu|1988|1|7.6;Whiplash|2014|1|8.5;Oppenheimer|2023|1|8.3;Schindler's List|1993|1|9.0;12 Hommes en colère|1957|1|9.0;Le Pianiste|2002|1|8.5;Green Book|2018|1|8.2;Nomadland|2020|1|7.3;Moonlight|2016|1|7.4;Hot Fuzz|2007|2|7.8;Very Bad Trip|2009|2|7.7;Superbad|2007|2|7.6;Le Grand Budapest Hotel|2014|2|8.1;Là-haut|2009|5|8.3;Wall-E|2008|5|8.4;Le Monde de Nemo|2003|5|8.2;Les Indestructibles|2004|5|8.0;Spider-Man: New Generation|2018|5|8.4;Princesse Mononoké|1997|5|8.3;Your Name|2016|5|8.4;Kung Fu Panda|2008|5|7.6;Dragons|2010|5|8.1;Encanto|2021|5|7.2;La Reine des neiges|2013|5|7.4;Barbie|2023|2|6.8;Top Gun: Maverick|2022|0|8.2;Mission: Impossible Fallout|2018|0|7.7;Casino Royale|2006|0|8.0;Skyfall|2012|0|7.8;Kill Bill|2003|0|8.2;Django Unchained|2012|0|8.5;Inglourious Basterds|2009|0|8.4;Le Loup de Wall Street|2013|1|8.2;The Social Network|2010|1|7.8;Birdman|2014|2|7.7;Mulholland Drive|2001|4|7.9;Memento|2000|4|8.4;Le Prestige|2006|4|8.5;Incendies|2010|1|8.3;Mommy|2014|1|8.0;Le Fabuleux Destin|2001|6|8.3;Les Évadés de Shawshank 2|2000|1|7.0`;
+const S=`Breaking Bad|2008|4|9.5;Game of Thrones|2011|8|9.2;Stranger Things|2016|3|8.7;The Office|2005|2|9.0;Friends|1994|2|8.9;Dark|2017|3|8.8;Peaky Blinders|2013|9|8.8;La Casa de Papel|2017|9|8.2;Lupin|2021|9|7.5;Black Mirror|2011|3|8.7;The Crown|2016|1|8.6;Squid Game|2021|4|8.0;The Last of Us|2023|1|8.7;Better Call Saul|2015|1|9.0;The Mandalorian|2019|3|8.7;The Witcher|2019|8|8.0;Vikings|2013|0|8.5;Narcos|2015|9|8.8;Sherlock|2010|9|9.1;The Wire|2002|9|9.3;Les Soprano|1999|9|9.2;Mad Men|2007|1|8.7;Dexter|2006|4|8.6;True Detective|2014|9|8.9;Chernobyl|2019|1|9.3;Band of Brothers|2001|0|9.4;The Boys|2019|0|8.7;House of the Dragon|2022|8|8.4;Succession|2018|1|8.8;Ozark|2017|4|8.5;Mindhunter|2017|9|8.6;Money Heist: Corée|2022|9|6.4;Arcane|2021|5|9.0;Rick et Morty|2013|5|9.1;Les Simpson|1989|5|8.7;South Park|1997|5|8.7;Avatar : Le Dernier Maître de l'air|2005|5|9.3;Bojack Horseman|2014|5|8.8;Attack on Titan|2013|0|9.1;Death Note|2006|4|9.0;One Piece|1999|0|8.9;Naruto|2002|0|8.4;Dragon Ball Z|1989|0|8.8;Fullmetal Alchemist|2009|8|9.1;Demon Slayer|2019|0|8.7;Brooklyn Nine-Nine|2013|2|8.4;How I Met Your Mother|2005|2|8.3;The Big Bang Theory|2007|2|8.1;Modern Family|2009|2|8.5;Parks and Recreation|2009|2|8.6;Ted Lasso|2020|2|8.8;Fleabag|2016|2|8.7;Call My Agent !|2015|2|8.3;Kaamelott|2005|2|8.8;Les Revenants|2012|8|7.5;Le Bureau des légendes|2015|4|8.7;Engrenages|2005|9|8.2;Baron noir|2016|1|8.3;Hippocrate|2018|1|7.7;Plan Cœur|2018|6|6.8;Bridgerton|2020|6|7.3;Outlander|2014|6|8.4;Normal People|2020|6|8.1;Grey's Anatomy|2005|1|7.6;Dr House|2004|1|8.7;Urgences|1994|1|7.9;Lost|2004|3|8.3;The X-Files|1993|3|8.6;Doctor Who|2005|3|8.6;Westworld|2016|3|8.5;The Expanse|2015|3|8.5;Severance|2022|3|8.7;Andor|2022|3|8.6;Loki|2021|3|8.2;WandaVision|2021|8|7.9;Wednesday|2022|8|8.1;Buffy|1997|8|8.3;Supernatural|2005|8|8.4;The Walking Dead|2010|7|8.1;American Horror Story|2011|7|8.0;The Haunting of Hill House|2018|7|8.6;Mike Flanagan : Midnight Mass|2021|7|7.7;Hannibal|2013|7|8.5;Yellowstone|2018|1|8.7;Fargo|2014|9|8.9;Westworld Saison 2|2018|3|7.8;Squid Game 2|2024|4|7.0;Shogun|2024|1|8.7;Le Problème à trois corps|2024|3|7.5;Fallout|2024|3|8.4;Baby Reindeer|2024|1|7.7;The Bear|2022|1|8.6;Beef|2023|2|8.0;Mercredi 2|2025|8|7.5`;
+const ON=new Set(["The Bear","Fallout","Wednesday","House of the Dragon","Bridgerton","The Last of Us","Rick et Morty","Les Simpson","South Park","One Piece","Grey's Anatomy","Demon Slayer","Severance","Ted Lasso","The Boys","Reacher","The Pitt","Slow Horses","Silo","Only Murders in the Building","Abbott Elementary","Alien: Earth","Dune: Prophecy","Les Anneaux de pouvoir","The Witcher","Le Problème à trois corps","Yellowstone","The Night Agent","You","Star Trek: Strange New Worlds","Heartstopper","Emily in Paris","The White Lotus","Euphoria","Percy Jackson","Ahsoka","Loki","Shogun","Arcane","Naruto","Capitaine Marleau","Call My Agent !","Mercredi 2"]);
+const parse=(s,t)=>s.split(";").map(x=>{const[a,b,c,d,e,f]=x.split("|");const k=e||t;return{t:a,y:+b,g:+c,n:+d,k,s:f||e==='v'&&'v'||(k==='s'&&ON.has(a)?'c':'')}});
+const S2=`The Mentalist|2008|9|8.2;Castle|2009|9|8.1;Bones|2005|9|7.8;NCIS|2003|9|7.8;Les Experts|2000|9|7.7;Esprits criminels|2005|9|8.1;Mr. Robot|2015|4|8.5;Prison Break|2005|0|8.3;24 Heures chrono|2001|0|8.4;Suits|2011|1|8.4;Gossip Girl|2007|1|7.4;Riverdale|2017|4|6.8;Vampire Diaries|2009|8|7.7;Teen Wolf|2011|8|7.6;Shameless|2011|2|8.5;Sons of Anarchy|2008|9|8.6;Boardwalk Empire|2010|9|8.5;Gotham|2014|9|7.8;Arrow|2012|0|7.5;The Flash|2014|3|7.5;Daredevil|2015|0|8.6;The Punisher|2017|0|8.5;Reacher|2022|0|8.1;Slow Horses|2022|4|8.2;The Night Agent|2023|4|7.5;You|2018|4|7.7;Elite|2018|4|7.3;Sex Education|2019|2|8.3;Euphoria|2019|1|8.3;The White Lotus|2021|2|7.6;Only Murders in the Building|2021|2|8.1;Abbott Elementary|2021|2|8.2;What We Do in the Shadows|2019|2|8.5;Cobra Kai|2018|0|8.5;Heartstopper|2022|6|8.6;Emily in Paris|2020|6|6.9;Gilmore Girls|2000|2|8.2;Desperate Housewives|2004|2|7.6;Scrubs|2001|2|8.3;Malcolm|2000|2|8.2;Black Sails|2014|0|8.1;Spartacus|2010|0|8.5;Rome|2005|1|8.7;Downton Abbey|2010|1|8.7;Line of Duty|2012|9|8.6;Broadchurch|2013|9|8.3;Happy Valley|2014|9|8.5;Luther|2010|9|8.5;Gomorra|2014|9|8.6;Un village français|2009|1|8.3;Profilage|2009|9|7.5;Capitaine Marleau|2015|9|7.5;The Handmaid's Tale|2017|1|8.4;Star Trek: Strange New Worlds|2022|3|8.3;Les Anneaux de pouvoir|2022|8|6.9;The Sandman|2022|8|7.7;Percy Jackson|2023|8|6.6;Ahsoka|2023|3|7.4;Silo|2023|3|8.1;Foundation|2021|3|7.5;Adolescence|2025|1|8.0;The Pitt|2025|1|8.7;Alien: Earth|2025|3|7.3;Dune: Prophecy|2024|3|7.0|s|c`,F2=`Avengers: Doomsday|2026|0|0|v;Dune : Troisième partie|2026|3|0|v;Avengers: Secret Wars|2027|0|0|v;The Batman Part II|2027|0|0|v;Shrek 5|2027|5|0|v;Star Wars: Starfighter|2027|3|0|v;Spider-Man: Brand New Day|2026|0|0;Toy Story 5|2026|5|0;The Mandalorian & Grogu|2026|3|0;The Odyssey|2026|0|0;Supergirl|2026|0|0;Super Mario Galaxy Movie|2026|5|0;Project Hail Mary|2026|3|0;Michael|2026|1|0;Mortal Kombat II|2026|0|0;Le Diable s'habille en Prada 2|2026|2|0;Avatar : De feu et de cendres|2025|3|0;Zootopie 2|2025|5|0;Wicked : Partie 2|2025|8|0;Superman|2025|0|0;Les 4 Fantastiques : Premiers pas|2025|0|0;Jurassic World : Renaissance|2025|3|0;Frankenstein|2025|8|0;Mission: Impossible – The Final Reckoning|2025|0|0;Sinners|2025|7|0;28 ans plus tard|2025|7|0`;
+ON.add("Invincible");ON.add("Gen V");ON.add("Frieren");ON.add("Jujutsu Kaisen");ON.add("Spy x Family");ON.add("Solo Leveling");
+const S3=`Fauda|2015|0|8.3;Narcos: Mexico|2018|9|8.3;Ripley|2024|4|8.1;Gen V|2023|0|7.5;Invincible|2021|5|8.7;Castlevania|2017|5|8.3;Cyberpunk: Edgerunners|2022|5|8.6;Jujutsu Kaisen|2020|0|8.6;Hunter x Hunter|2011|0|9.0;My Hero Academia|2016|0|8.0;Vinland Saga|2019|0|8.8;Chainsaw Man|2022|0|8.4;Solo Leveling|2024|0|8.2;Frieren|2023|8|9.3;Spy x Family|2022|2|8.5;The Marvelous Mrs. Maisel|2017|2|8.7;Veep|2012|2|8.3;Curb Your Enthusiasm|2000|2|8.7;Seinfeld|1989|2|8.9;Arrested Development|2003|2|8.7;The IT Crowd|2006|2|8.5;Community|2009|2|8.5;Schitt's Creek|2015|2|8.5;New Girl|2011|2|7.7;Le Jeu de la dame|2020|1|8.5;Maid|2021|1|8.1;Dahmer|2022|9|8.0;Mare of Easttown|2021|9|8.4;Big Little Lies|2017|1|8.5;The Leftovers|2014|3|8.3;Twin Peaks|1990|4|8.8;Utopia|2013|4|8.4;Misfits|2009|3|8.1;Skins|2007|1|7.8;Merlin|2008|8|7.9;Once Upon a Time|2011|8|7.7;Charmed|1998|8|7.2;Smallville|2001|3|7.5;Heroes|2006|3|7.6;Fringe|2008|3|8.4;Battlestar Galactica|2004|3|8.7;Stargate SG-1|1997|3|8.4;The 100|2014|3|7.6;Orphan Black|2013|3|8.2;Les Mystères de Bly Manor|2020|7|7.4;Ash vs Evil Dead|2015|7|8.1;Penny Dreadful|2014|7|8.2`,F3=`Drive|2011|9|7.8;Nightcrawler|2014|4|7.8;Sicario|2015|4|7.6;Arrival|2016|3|7.9;Ex Machina|2014|3|7.7;Tenet|2020|3|7.3;Dunkerque|2017|0|7.8;1917|2019|0|8.2;Logan|2017|0|8.1;Deadpool|2016|0|8.0;Everything Everywhere All at Once|2022|3|7.8;The Batman|2022|9|7.8;Midsommar|2019|7|7.1;Un endroit où se cacher|2018|7|7.5;Fenêtre sur cour|1954|4|8.5;Citizen Kane|1941|1|8.3;Casablanca|1942|6|8.5;Le Bon, la Brute et le Truand|1966|0|8.8;Apocalypse Now|1979|1|8.4;Taxi Driver|1976|1|8.2;Les Tontons flingueurs|1963|2|7.8;La Grande Vadrouille|1966|2|7.8;Le Père Noël est une ordure|1982|2|7.7;Astérix et Obélix : Mission Cléopâtre|2002|2|6.9;Un prophète|2009|9|7.8;Les Misérables|2019|1|7.5;Anatomie d'une chute|2023|4|7.6;Portrait de la jeune fille en feu|2019|6|8.1;Cinema Paradiso|1988|1|8.5;La vie est belle|1997|2|8.6;Les Sept Samouraïs|1954|0|8.6;Old Boy|2003|4|8.3;Soul|2020|5|8.0;Luca|2021|5|7.4;Le Chat potté 2|2022|5|7.9;Super Mario Bros, le film|2023|5|7.0;Moi, moche et méchant|2010|5|7.6;L'Âge de glace|2002|5|7.5;Hunger Games|2012|3|7.2;Twilight|2008|6|5.3;Fast & Furious 7|2015|0|7.1;Rocky|1976|1|8.1;Creed|2015|1|7.6;Top Gun|1986|0|6.9;SOS Fantômes|1984|2|7.8;Gremlins|1984|7|7.3;E.T.|1982|3|7.9;Indiana Jones : Les Aventuriers de l'arche perdue|1981|0|8.4`;
+["Lupin","Scrubs","Landman"].forEach(t=>ON.add(t));
+const S4=`East of Eden|2026|1|0|s|c;Lanterns|2026|3|0|s|c;War|2026|0|0|s|c;American Hostage|2026|4|0|s|c;Coven Academy|2026|8|0|s|c;Neagley|2026|9|0|s|c;A Killer Story|2026|9|0|s|c;Kill Jackie|2026|4|0|s|c;MobLand|2025|9|0|s|c;Carrie|2026|7|0|s|c;VisionQuest|2026|3|0|s|c;The Diplomat|2023|4|0|s|c;Nobody Wants This|2024|6|0|s|c;Tulsa King|2022|9|0|s|c;The Lowdown|2025|9|0|s|c;Reasonable Doubt|2022|1|0|s|c;Avatar : Seven Havens|2026|5|0|s|c;Crystal Lake|2026|7|0|s|c;Pluribus|2025|3|0|s|c;Landman|2024|1|0|s|c;Heated Rivalry|2025|6|0|s|c;Monster : L'histoire d'Ed Gein|2025|7|0|s|c;Paradise|2025|4|0|s|c;Task|2025|9|0|s|c;Dept. Q|2025|9|0|s|c;Alice in Borderland|2020|4|7.8|s`,F4=`Peaky Blinders : The Immortal Man|2026|9|0|f;Disclosure Day|2026|3|0|f;Weapons|2025|7|0|f;One Battle After Another|2025|0|0|f;Marty Supreme|2025|1|0|f;Hamnet|2025|1|0|f;Sentimental Value|2025|1|0|f;Bugonia|2025|3|0|f;KPop Demon Hunters|2025|5|0|f;F1|2025|0|0|f;The Housemaid|2025|4|0|f;Send Help|2026|7|0|f;Wuthering Heights|2026|6|0|f;Hoppers|2026|5|0|f;Scream 7|2026|7|0|f;The Bride !|2026|7|0|f;Un film Minecraft|2025|0|0|f;Lilo & Stitch|2025|5|0|f;Dragons (live action)|2025|8|0|f;Thunderbolts*|2025|0|0|f;Destination finale : Bloodlines|2025|7|0|f;Nosferatu|2024|7|0|f;Wicked|2024|8|7.4|f;Gladiator II|2024|0|6.8|f;Deadpool & Wolverine|2024|0|7.6|f;Vice-Versa 2|2024|5|7.6|f;Vaiana 2|2024|5|6.8|f;The Substance|2024|7|7.3|f;Anora|2024|2|7.5|f;Conclave|2024|1|7.4|f;Challengers|2024|1|7.2|f;Dune : Deuxième partie|2024|3|8.5|f;Furiosa|2024|0|7.5|f;Alien: Romulus|2024|7|7.2|f;Joker: Folie à Deux|2024|1|5.2|f;Beetlejuice Beetlejuice|2024|2|6.7|f`;
+const ALL=[...parse(F,"f"),...parse(S,"s"),...parse(S2,"s"),...parse(F2,"f"),...parse(S3,"s"),...parse(F3,"f"),...parse(S4,"s"),...parse(F4,"f")].map(x=>x.k==="v"?{...x,k:"f",s:"v"}:x);
+let type="all",gen=-1,shown=60,favs=new Set();
+try{favs=new Set(JSON.parse(localStorage.getItem("fav")||"[]"))}catch(e){}
+const $=id=>document.getElementById(id);
+const hue=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h};
+function mk(box,list,cur,fn){box.innerHTML="";list.forEach(([v,l])=>{const b=document.createElement("button");b.textContent=l;if(v===cur)b.className="on";b.onclick=()=>fn(v);box.appendChild(b)})}
+function ui(){
+mk($("tabs"),[["all","Tout"],["f","Films"],["s","Séries"],["c","En cours"],["v","À venir"],["w","✓ Vus"],["fav","❤ Ma liste"]],type,v=>{type=v;shown=60;ui()});
+mk($("chips"),[[-1,"Tous genres"],...G.map((g,i)=>[i,g])],gen,v=>{gen=v;shown=60;ui()});
+const q=$("q").value.toLowerCase().trim();
+let l=ALL.filter(x=>(type==="all"||(type==="fav"?favs.has(x.t):type==="w"?watched.has(x.t):type==="c"?x.s==="c":type==="v"?x.s==="v":x.k===type))&&(gen<0||x.g===gen)&&x.t.toLowerCase().includes(q)&&x.n>=cfg.minr&&!(cfg.hidew&&watched.has(x.t))&&dk(x));
+const s=$("sort").value;
+l.sort(s==="p"?(a,b)=>(stars[b.t]||0)-(stars[a.t]||0)||b.n-a.n:s==="n"?(a,b)=>b.n-a.n:s==="y"?(a,b)=>b.y-a.y:(a,b)=>a.t.localeCompare(b.t,"fr"));
+$("count").textContent=l.length+" titre"+(l.length>1?"s":"")+" sur "+ALL.length;
+const g=$("g");g.innerHTML="";
+l.slice(0,shown).forEach((x,idx)=>{
+const h=hue(x.t),c=document.createElement("div");c.className="card";c.style.cssText=`--h:${h};--i:${Math.min(idx,16)}`;
+c.innerHTML=`<div class="poster" style="background:linear-gradient(160deg,hsl(${h},70%,48%),hsl(${(h+55)%360},70%,16%))"><i>${x.t[0]}</i><span>${x.t}</span><small>${x.y}</small></div><span class="badge">${x.k==="f"?"Film":"Série"}${x.s==="c"?" · En cours":x.s==="v"?" · À venir":""}</span><div class="meta"><span>${G[x.g]}</span><span>${x.n?"<em>★</em> "+x.n.toFixed(1):"Nouveau"}</span></div>`;
+const b=document.createElement("button");b.className="fav"+(favs.has(x.t)?" on":"");b.textContent="♥";
+b.onclick=e=>{e.stopPropagation();tog(x.t)};c.onclick=()=>openM(x);c.classList.toggle("seen",watched.has(x.t));{const pe=c.querySelector(".poster");pe._x=x;if(TMDB_KEY)io.observe(pe)}c.appendChild(b);g.appendChild(c)});
+$("more").style.display=l.length>shown?"block":"none";
+}
+$("q").oninput=()=>{shown=60;ui()};$("sort").onchange=ui;
+$("more").onclick=()=>{shown+=60;ui()};
+function tog(t){favs.has(t)?favs.delete(t):favs.add(t);try{localStorage.setItem("fav",JSON.stringify([...favs]))}catch(e){}ui()}
+const lab=x=>(x.k==="f"?"FILM":"SÉRIE")+" · "+G[x.g]+" · "+x.y+(x.s==="c"?" · EN COURS":x.s==="v"?" · À VENIR":"");
+function openM(x){const h=hue(x.t),m=$("m");m.innerHTML=`<div class="mb" style="background:linear-gradient(160deg,hsl(${h},70%,42%),hsl(${(h+60)%360},70%,12%))"><button class="x">✕</button><span class="tag">${lab(x)}</span><h3>${x.t}</h3><p>${x.n?"★ "+x.n.toFixed(1)+" / 10 — ":""}${x.s==="v"?"Prochainement dans les salles. À ajouter à ta liste pour ne pas l'oublier.":x.s==="c"?"Série en cours de diffusion, de nouveaux épisodes arrivent.":"Un incontournable de notre catalogue."}</p><button class="cta">${favs.has(x.t)?"♥ Dans ma liste":"♡ Ajouter à ma liste"}</button></div>`;m.hidden=false;m.onclick=e=>{if(e.target===m||e.target.className==="x")m.hidden=true};m.querySelector(".cta").onclick=()=>{tog(x.t);openM(x)}}
+const HERO=ALL.filter(x=>x.n>=8.6||x.s==="v");let hi=0;
+function hero(){const x=HERO[hi%HERO.length],h=hue(x.t),e=$("hero");e.style.background=`radial-gradient(circle at 85% 20%,hsl(${(h+40)%360},80%,55%),transparent 60%),linear-gradient(135deg,hsl(${h},70%,38%),hsl(${(h+60)%360},70%,10%))`;e.innerHTML=`<div class="hc" key="${hi}"><span class="tag">${lab(x)}</span><h2>${x.t}</h2><p>${x.n?"★ "+x.n.toFixed(1)+" / 10 — à voir absolument":"Bientôt disponible"}</p><button class="cta" id="h1">Voir la fiche</button><button class="cta g" id="h2">🎲 Surprends-moi</button></div>`;$("h1").onclick=()=>openM(x);$("h2").onclick=()=>openM(ALL[Math.floor(Math.random()*ALL.length)])}
+hi=Math.floor(Math.random()*HERO.length);hero();setInterval(()=>{if(cfg.auto){hi++;hero()}},7000);
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+let watched=new Set(ld("watched",[])),stars=ld("stars",{}),cfg={theme:"auto",pal:0,w:145,anim:true,auto:true,hidew:false,minr:0,...ld("cfg",{})};
+const PAL=[["#ff2e4d","#ff9d2e"],["#7c4dff","#00d4ff"],["#00c48c","#b6ff3d"],["#ff3d9a","#ffb300"],["#2e8bff","#6affd8"]];
+let unl=ld("mrk",false)===true,U=null,DB=null;
+const sha=async t=>[...new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)))].map(b=>b.toString(16).padStart(2,"0")).join("");
+const dk=x=>{const d=+$("dec").value;return !d||(d===1900?x.y<1990:x.y>=d&&x.y<d+10)};
+function save(){try{localStorage.setItem("fav",JSON.stringify([...favs]));localStorage.setItem("watched",JSON.stringify([...watched]));localStorage.setItem("stars",JSON.stringify(stars));localStorage.setItem("cfg",JSON.stringify(cfg));localStorage.setItem("mrk",JSON.stringify(unl))}catch(e){}}
+function apply(){const r=document.documentElement,p=PAL[cfg.pal]||PAL[0];r.style.setProperty("--ac",p[0]);r.style.setProperty("--ac2",p[1]);r.style.setProperty("--w",cfg.w+"px");cfg.theme==="auto"?r.removeAttribute("data-theme"):r.dataset.theme=cfg.theme;document.body.classList.toggle("noanim",!cfg.anim)}
+function tog(t){favs.has(t)?favs.delete(t):favs.add(t);save();ui()}
+function openM(x){const h=hue(x.t),m=$("m"),r=stars[x.t]||0,sim=ALL.filter(y=>y!==x&&y.g===x.g&&y.k===x.k).sort((a,b)=>b.n-a.n).slice(0,5);
+m.innerHTML=`<div class="mb" style="background:linear-gradient(160deg,hsl(${h},70%,42%),hsl(${(h+60)%360},70%,12%))"><button class="x">✕</button><span class="tag">${lab(x)}</span><h3>${x.t}</h3><p>${x.n?"★ "+x.n.toFixed(1)+" / 10 — ":""}${x.s==="v"?"Prochainement dans les salles.":x.s==="c"?"Série en cours de diffusion.":"Un incontournable du catalogue."}</p><div class="st">${[1,2,3,4,5].map(i=>`<b data-s="${i}" class="${i<=r?"on":""}">★</b>`).join("")}</div><button class="cta" id="bl">${favs.has(x.t)?"♥ Dans ma liste":"♡ Ma liste"}</button><button class="cta g" id="bv">${watched.has(x.t)?"✓ Vu":"Marquer comme vu"}</button>${unl?`<button class="cta g" id="bd">⬇ Télécharger la fiche</button>`:""}<div class="sim">Similaires :<br>${sim.map((y,i)=>`<u data-i="${i}">${y.t}</u>`).join("")}</div></div>`;
+m.hidden=false;m.onclick=e=>{if(e.target===m||e.target.className==="x")m.hidden=true};
+m.querySelectorAll(".st b").forEach(b=>b.onclick=()=>{stars[x.t]=stars[x.t]==+b.dataset.s?0:+b.dataset.s;save();openM(x)});
+$("bl").onclick=()=>{tog(x.t);openM(x)};
+$("bv").onclick=()=>{watched.has(x.t)?watched.delete(x.t):watched.add(x.t);save();ui();openM(x)};
+if($("bd"))$("bd").onclick=()=>sv(fn(x.t)+".txt",`${x.t}\n${lab(x)}\nNote : ${x.n||"n/a"}\nCatalogue CinéMRK`,$("bd"));
+m.querySelectorAll("u").forEach(u=>u.onclick=()=>openM(sim[+u.dataset.i]))}
+function openS(){const t=$("st"),v=Object.values(stars).filter(Boolean),avg=v.length?(v.reduce((a,b)=>a+b)/v.length).toFixed(1):"–";
+t.innerHTML=`<div class="sb"><h3>⚙️ Paramètres</h3>
+<div class="sr"><label>Thème</label><select id="s1"><option value="auto">Auto</option><option value="dark">Sombre</option><option value="light">Clair</option></select></div>
+<div class="sr"><label>Couleur</label><span>${PAL.map((p,i)=>`<button class="sw${i==cfg.pal?" on":""}" data-i="${i}" style="background:linear-gradient(135deg,${p[0]},${p[1]})"></button>`).join("")}</span></div>
+<div class="sr"><label>Taille des affiches</label><input type="range" id="s2" min="100" max="230" value="${cfg.w}"></div>
+<div class="sr"><label>Note minimale : <b id="mv">${cfg.minr}</b></label><input type="range" id="s3" min="0" max="9" step=".5" value="${cfg.minr}"></div>
+<div class="sr"><label for="s4">Animations</label><input type="checkbox" id="s4" ${cfg.anim?"checked":""}></div>
+<div class="sr"><label for="s5">Bandeau automatique</label><input type="checkbox" id="s5" ${cfg.auto?"checked":""}></div>
+<div class="sr"><label for="s6">Masquer les titres vus</label><input type="checkbox" id="s6" ${cfg.hidew?"checked":""}></div>
+<div class="sr"><input id="sc" placeholder="Code d'accès" style="flex:1" value=""><button class="cta" id="sk" style="margin:0">${unl?"Débloqué ✓":"Valider"}</button></div>${unl?`<button class="cta g" id="sa">⬇ Télécharger le catalogue (CSV)</button>`:""}
+<p class="sn">❤ ${favs.size} dans ma liste · ✓ ${watched.size} vus · ★ ma note moyenne ${avg}</p>
+<textarea id="s7" placeholder="Sauvegarde (JSON) : exporte ou colle ici pour importer"></textarea>
+<button class="cta" id="s8">Exporter</button> <button class="cta g" id="s9">Importer</button> <button class="cta g" id="s10">Réinitialiser</button> <button class="cta g" id="s11">Fermer</button><p class="cr">Créé par <b>MOUHAMED RASSOUL KANE</b></p></div>`;
+t.hidden=false;t.onclick=e=>{if(e.target===t)t.hidden=true};
+$("s1").value=cfg.theme;$("s1").onchange=e=>{cfg.theme=e.target.value;apply();save()};
+t.querySelectorAll(".sw").forEach(b=>b.onclick=()=>{cfg.pal=+b.dataset.i;apply();save();openS()});
+$("s2").oninput=e=>{cfg.w=+e.target.value;apply();save()};
+$("s3").oninput=e=>{cfg.minr=+e.target.value;$("mv").textContent=cfg.minr;save();ui()};
+$("s4").onchange=e=>{cfg.anim=e.target.checked;apply();save()};
+$("s5").onchange=e=>{cfg.auto=e.target.checked;save()};
+$("s6").onchange=e=>{cfg.hidew=e.target.checked;save();ui()};
+$("s8").onclick=()=>{const j=JSON.stringify({fav:[...favs],watched:[...watched],stars});$("s7").value=j;try{navigator.clipboard.writeText(j);$("s8").textContent="Copié ✓"}catch(e){}};
+$("s9").onclick=()=>{try{const d=JSON.parse($("s7").value);favs=new Set(d.fav||[]);watched=new Set(d.watched||[]);stars=d.stars||{};save();ui();openS()}catch(e){$("s9").textContent="JSON invalide"}};
+let rs=0;$("s10").onclick=()=>{if(!rs){rs=1;$("s10").textContent="Confirmer ?";return}favs=new Set();watched=new Set();stars={};cfg={theme:"auto",pal:0,w:145,anim:true,auto:true,hidew:false,minr:0};apply();save();ui();openS()};
+$("sk").onclick=async()=>{let h="";try{h=await sha($("sc").value.trim().toUpperCase())}catch(e){}if(h==="8db2dec83ccf229dab8bbc8bd871ae9da39f0a1fbe3367c827ff709c45d46b17"){unl=true;save();openS()}else $("sk").textContent="Code incorrect"};
+adm();
+if($("sa"))$("sa").onclick=()=>sv("CineMRK_catalogue.csv","Titre,Type,Genre,Annee,Note,Statut\n"+ALL.map(x=>[x.t,x.k==="f"?"Film":"Serie",G[x.g],x.y,x.n||"",x.s||""].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(",")).join("\n"),$("sa"));
+$("s11").onclick=()=>t.hidden=true}
+const fn=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w]+/g,"_");
+async function sv(f,data,b){const o=b.textContent;try{let d=null;try{d=await claude.use("downloads")}catch(e){}if(d)await d.save({filename:f,data});else{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+data],{type:"text/plain;charset=utf-8"}));a.download=f;document.body.appendChild(a);a.click();a.remove()}b.textContent="Enregistré ✓"}catch(e){b.textContent=e&&e.code==="declined"?o:"Échec"}}
+async function adm(){try{if(!U||!DB||!(await U.isOwner()))return;const sb=document.querySelector(".sb"),d=document.createElement("div");d.innerHTML='<p class="sn">🔐 Accès aux téléchargements (propriétaire)</p><input id="as" placeholder="Rechercher une personne à autoriser…" style="margin-top:8px"><div id="ar"></div><p class="sn" id="al"></p>';sb.insertBefore(d,sb.querySelector(".cr"));
+const list=async()=>{const q=await DB.collection("access").get(),ids=q.docs.map(x=>x.id),ps=ids.length?await U.profiles(ids):{};$("al").textContent=ids.length?"Autorisés (clique pour retirer) :":"Aucun accès accordé.";q.docs.forEach(x=>{const b=document.createElement("button");b.className="cta g";b.textContent="✕ "+((ps[x.id]&&ps[x.id].name)||"Invité");b.onclick=async()=>{await DB.doc("access/"+x.id).delete();list()};$("al").appendChild(b)})};
+$("as").oninput=async e=>{const r=await U.search(e.target.value);$("ar").innerHTML="";r.slice(0,5).forEach(p=>{const b=document.createElement("button");b.className="cta";b.textContent="+ "+p.name;b.onclick=async()=>{await DB.doc("access/"+p.id).set({ok:true});list()};$("ar").appendChild(b)})};list()}catch(e){}}
+(async()=>{try{U=await claude.use("user");DB=await claude.use("db");if(U&&DB){const id=await U.id();if(await U.isOwner()||(id&&(await DB.doc("access/"+id).get()).exists)){unl=true}}}catch(e){}})();
+const PC=ld("pc",{});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);loadP(e.target)}}),{rootMargin:"300px"});
+async function tm(x,yr){const t=x.k==="f"?"movie":"tv",r=await fetch(`https://api.themoviedb.org/3/search/${t}?api_key=${TMDB_KEY}&language=fr-FR&query=${encodeURIComponent(x.t)}${yr?(t==="movie"?"&year=":"&first_air_date_year=")+x.y:""}`),j=await r.json(),h=(j.results||[]).find(z=>z.poster_path);return h?h.poster_path:""}
+async function loadP(el){const x=el._x;let u=PC[x.t];if(u===undefined){try{u=await tm(x,true)||await tm(x,false);PC[x.t]=u;try{localStorage.setItem("pc",JSON.stringify(PC))}catch(e){}}catch(e){return}}
+if(u){const im=new Image();im.onload=()=>{el.style.background=`url(https://image.tmdb.org/t/p/w342${u}) center/cover`;el.classList.add("img")};im.src="https://image.tmdb.org/t/p/w342"+u}}
+ui();
+</script></body></html>
